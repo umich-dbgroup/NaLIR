@@ -69,11 +69,12 @@ public class FeedbackGenerator
 						MappedSchemaElement mappedElement = NTVT.mappedElements.get(j); 
 						if(mappedElement.schemaElement.type.equals("entity") || mappedElement.schemaElement.type.equals("relationship"))
 						{
-							nodeMap += mappedElement.schemaElement.name + "(" mappedElement.similarity;
+							nodeMap += mappedElement.schemaElement.name + " (" + mappedElement.similarity + ")";
 						}
 						else
 						{
-							nodeMap += mappedElement.schemaElement.relation.name + "." + mappedElement.schemaElement.name; 
+							nodeMap += mappedElement.schemaElement.relation.name + "."
+									+ mappedElement.schemaElement.name + " (" + mappedElement.similarity + ")";
 						}
 						
 						if(mappedElement.mappedValues.size() > 0 && j == NTVT.choice && NTVT.tokenType.startsWith("VT")
@@ -82,7 +83,7 @@ public class FeedbackGenerator
 							nodeMap += "#" + mappedElement.choice; 
 							for(int k = 0; k < mappedElement.mappedValues.size() && k < 5; k++)
 							{
-								nodeMap += "#" + mappedElement.mappedValues.get(k); 
+								nodeMap += "#" + mappedElement.mappedValues.get(k);
 							}
 						}
 					}
