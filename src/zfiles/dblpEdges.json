@@ -1,0 +1,26 @@
+[
+  {
+    "foreignAttribute": "cid",
+    "primaryAttribute": "cid",
+    "foreignRelation": "paper",
+    "primaryRelation": "conference"
+  },
+  {
+    "foreignAttribute": "jid",
+    "primaryAttribute": "jid",
+    "foreignRelation": "paper",
+    "primaryRelation": "journal"
+  },
+  {
+    "foreignAttribute": "aid",
+    "primaryAttribute": "aid",
+    "foreignRelation": "writes",
+    "primaryRelation": "author"
+  },
+  {
+    "foreignAttribute": "pid",
+    "primaryAttribute": "pid",
+    "foreignRelation": "writes",
+    "primaryRelation": "paper"
+  }
+]

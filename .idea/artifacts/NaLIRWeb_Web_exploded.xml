@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="NaLIRWeb:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/NaLIRWeb_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="NaLIR/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="NaLIR" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="stanford-parser-3.2.0-sources" />
+          <element id="library" level="project" name="ws4j-1.0.1" />
+          <element id="library" level="project" name="mysql-connector-java-5.0.8-bin" />
+          <element id="library" level="project" name="morphadorner" />
+          <element id="library" level="project" name="com.googlecode.json-simple:json-simple:1.1.1" />
+          <element id="library" level="project" name="stanford-parser-3.2.0-models" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

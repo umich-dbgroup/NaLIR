@@ -1,0 +1,88 @@
+[
+  {
+    "name": "author",
+    "attributes": [
+      {
+        "name": "aid",
+        "type": "pk"
+      },
+      {
+        "importance": "important",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "conference",
+    "attributes": [
+      {
+        "name": "cid",
+        "type": "pk"
+      },
+      {
+        "importance": "important",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "journal",
+    "attributes": [
+      {
+        "name": "jid",
+        "type": "pk"
+      },
+      {
+        "importance": "important",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "paper",
+    "attributes": [
+      {
+        "name": "pid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "title",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "type": "number"
+      },
+      {
+        "name": "cid",
+        "type": "fk"
+      },
+      {
+        "name": "jid",
+        "type": "fk"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "writes",
+    "attributes": [
+      {
+        "name": "aid",
+        "type": "fk"
+      },
+      {
+        "name": "pid",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  }
+]

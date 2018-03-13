@@ -1,0 +1,56 @@
+[
+  {
+    "foreignAttribute": "aid",
+    "primaryAttribute": "aid",
+    "foreignRelation": "act",
+    "primaryRelation": "actor"
+  },
+  {
+    "foreignAttribute": "mid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "act",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "cid",
+    "primaryAttribute": "cid",
+    "foreignRelation": "act",
+    "primaryRelation": "charactor"
+  },
+  {
+    "foreignAttribute": "did",
+    "primaryAttribute": "did",
+    "foreignRelation": "direct",
+    "primaryRelation": "director"
+  },
+  {
+    "foreignAttribute": "mid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "direct",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "mid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "distribute",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "did",
+    "primaryAttribute": "did",
+    "foreignRelation": "distribute",
+    "primaryRelation": "distributor"
+  },
+  {
+    "foreignAttribute": "mid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "produce",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "pid",
+    "primaryAttribute": "pid",
+    "foreignRelation": "produce",
+    "primaryRelation": "producer"
+  }
+]
