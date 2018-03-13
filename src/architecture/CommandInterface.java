@@ -48,7 +48,7 @@ public class CommandInterface
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); 
     	DocumentBuilder builder = factory.newDocumentBuilder();
-		tokens = builder.parse(new File("/Users/cjbaik/dev/feis_stuff/NaLIRWeb/src/zfiles/tokens.xml"));
+		tokens = builder.parse(new File("/Users/cjbaik/dev/NaLIR/src/zfiles/tokens.xml"));
 	}
 
 	public void executeCommand(String command) throws Exception

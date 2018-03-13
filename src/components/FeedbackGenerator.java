@@ -69,7 +69,7 @@ public class FeedbackGenerator
 						MappedSchemaElement mappedElement = NTVT.mappedElements.get(j); 
 						if(mappedElement.schemaElement.type.equals("entity") || mappedElement.schemaElement.type.equals("relationship"))
 						{
-							nodeMap += mappedElement.schemaElement.name; 
+							nodeMap += mappedElement.schemaElement.name + "(" mappedElement.similarity;
 						}
 						else
 						{
