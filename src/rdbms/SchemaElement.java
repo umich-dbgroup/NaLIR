@@ -55,7 +55,7 @@ public class SchemaElement implements Serializable
 	{
 		Statement statement = conn.createStatement(); 
 		String numberSQL = "SELECT *" + " FROM size WHERE size.relation = '" + this.relation.name + "'"; 
-        System.out.println(numberSQL);
+//        System.out.println(numberSQL);
 		ResultSet number = statement.executeQuery(numberSQL); 
 		number.next(); 
 		int size = number.getInt(1); 
@@ -73,7 +73,7 @@ public class SchemaElement implements Serializable
 		{
 			SQL = "SELECT " + this.name + " FROM " + this.relation.name + " WHERE MATCH(" + this.name + ") AGAINST ('" +  value + "') LIMIT 0, 2000"; 
 		}
-		System.out.println(SQL);
+//		System.out.println(SQL);
 		ResultSet result = statement.executeQuery(SQL); 
 		
 		MappedSchemaElement mappedSchemaElement = new MappedSchemaElement(this);  
