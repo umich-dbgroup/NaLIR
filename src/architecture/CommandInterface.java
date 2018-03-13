@@ -25,21 +25,22 @@ public class CommandInterface
 
 	public static void main(String [] args) throws Exception
 	{
-		CommandInterface system = new CommandInterface(); 
-		system.executeCommand("#useDB dblp"); 
-		String sentence = "return me the paper on \"SIGMOD\". "; 
-		system.executeCommand("#query " + sentence); 
-		System.out.println(system.query.translatedSQL); 
+		CommandInterface system = new CommandInterface();
+		System.out.println("NaLIR Loaded. Type 'exit' to quit.");
+		system.executeCommand("#useDB mas");
 
-		while(true)
+		Scanner scan = new Scanner(System.in);
+		while (true)
 		{
-			Scanner scan = new Scanner(System.in); 
-			{
-				String command = scan.nextLine(); 
-				system.executeCommand(command); 
+			System.out.print("NaLIR> ");
+			String command = scan.nextLine();
+
+			if (command.equals("exit")) {
+				break;
 			}
-			scan.close();
+			system.executeCommand(command);
 		}
+		scan.close();
 	}
 	
 	public CommandInterface() throws Exception

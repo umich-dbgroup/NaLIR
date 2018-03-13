@@ -34,7 +34,12 @@ There are some hard-coded paths (to schema information and the like) in the orig
 
 ### Execute
 
-You can either spin up an Apache Tomcat Server (the configuration should be setup for IntelliJ IDEA Ultimate Edition currently) and head to `/nalir.jsp` in your browser, or, alternatively, execute `Experiments.java` with some modification to run your tests (not recommended).
+You can either:
+* Spin up an Apache Tomcat Server (the configuration should be setup for IntelliJ IDEA Ultimate Edition currently) and head to `/nalir.jsp` in your browser at the right port
+* Execute `CommandInterface.java` using some of the following example commands to use it interactively
+    * `#useDB mas` - initial setup, loads the MAS database
+    * `#query return me the homepage of PVLDB` - run a query
+* Execute `Experiments.java` with some modification to run your tests
 
 ## Questions?
 
