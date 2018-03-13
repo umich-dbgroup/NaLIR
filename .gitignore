@@ -48,6 +48,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# Ignore heavy lib files and builds
+# Ignore heavy lib files and builds, output files
 lib/
 build/
+*.out

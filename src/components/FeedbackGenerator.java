@@ -92,21 +92,19 @@ public class FeedbackGenerator
 				}
 			}
 			
-			if(!query.NLSentences.isEmpty())
-			{
-				feedback += "#general " + query.queryTreeID + "\n"; 
-			}
-			for(int i = 0; i < query.NLSentences.size(); i++)
-			{
-				NLSentence NL = query.NLSentences.get(i); 
-				feedback += "#general " + NL.General(); 
-			}
-			
-			ArrayList<String> specific = query.NLSentences.get(query.queryTreeID).Specific(); 
-			
-			for(int i = 0; i < specific.size(); i++)
-			{
-				feedback += specific.get(i); 
+			if(!query.NLSentences.isEmpty()) {
+				feedback += "#general " + query.queryTreeID + "\n";
+
+				for (int i = 0; i < query.NLSentences.size(); i++) {
+					NLSentence NL = query.NLSentences.get(i);
+					feedback += "#general " + NL.General();
+				}
+
+				ArrayList<String> specific = query.NLSentences.get(query.queryTreeID).Specific();
+
+				for (int i = 0; i < specific.size(); i++) {
+					feedback += specific.get(i);
+				}
 			}
 		}
 		
