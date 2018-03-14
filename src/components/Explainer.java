@@ -94,7 +94,10 @@ public class Explainer
 					addThe = true; 
 				}
 				label += left.label; 
-				NL.addNode(left, label, false); 
+				NL.addNode(left, label, false);
+
+				if (left.children.isEmpty()) break;
+				
 				left = left.children.get(0); 
 			}
 			
