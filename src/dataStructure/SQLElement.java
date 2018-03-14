@@ -15,7 +15,10 @@ public class SQLElement
 	
 	public String toString(Block block, String attribute)
 	{
-		String result = ""; 
+		String result = "";
+
+		if (node.mappedElements.isEmpty()) return result;
+
 		if(block.equals(this.block))
 		{
 			SchemaElement element = node.mappedElements.get(node.choice).schemaElement; 

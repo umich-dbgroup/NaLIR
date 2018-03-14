@@ -97,7 +97,7 @@ public class Explainer
 				NL.addNode(left, label, false);
 
 				if (left.children.isEmpty()) break;
-				
+
 				left = left.children.get(0); 
 			}
 			
