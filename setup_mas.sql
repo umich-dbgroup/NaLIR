@@ -27,7 +27,9 @@ CREATE TABLE history(
     content VARCHAR(1000)
 );
 
--- add fulltext index for publication (only run once)
+-- add fulltext indices (only run once)
 ALTER TABLE publication ADD FULLTEXT(title);
 ALTER TABLE publication ADD FULLTEXT(abstract);
 ALTER TABLE publication ADD FULLTEXT(doi);
+ALTER TABLE author ADD FULLTEXT(homepage);
+ALTER TABLE author ADD FULLTEXT(photo);
