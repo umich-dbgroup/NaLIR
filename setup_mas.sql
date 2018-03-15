@@ -30,3 +30,4 @@ CREATE TABLE history(
 -- add fulltext index for publication (only run once)
 ALTER TABLE publication ADD FULLTEXT(title);
 ALTER TABLE publication ADD FULLTEXT(abstract);
+ALTER TABLE publication ADD FULLTEXT(doi);
