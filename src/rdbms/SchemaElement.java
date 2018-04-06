@@ -93,7 +93,7 @@ public class SchemaElement implements Serializable
 	{
 		Statement statement = conn.createStatement(); 
 		String query = "SELECT " + this.name + " FROM " + this.relation.name + " WHERE " + this.name + operator + " " + number + " LIMIT 0, 5"; 
-		
+
 		ResultSet result = statement.executeQuery(query); 
 		MappedSchemaElement mappedSchemaElement = new MappedSchemaElement(this);  
 		while(result.next())

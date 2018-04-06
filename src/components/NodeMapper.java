@@ -161,7 +161,11 @@ public class NodeMapper
 				}
 				else if(treeNode.children.size() == 1 && treeNode.children.get(0).tokenType.equals("OT"))
 				{
-					OT = treeNode.children.get(0).function; 
+					OT = treeNode.children.get(0).function;
+					// cjbaik 04/06/2018: Hack for Yelp dataset
+					if (OT.equals("NA") && treeNode.children.get(0).label.equalsIgnoreCase("at least")) {
+						OT = ">=";
+					}
 				}
 				db.isNumExist(OT, treeNode); 
 				{

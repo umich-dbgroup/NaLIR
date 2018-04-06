@@ -25,12 +25,16 @@ public class Experiments
 	public static void main(String [] args) throws Exception
 	{
 		CommandInterface ci = new CommandInterface();
-		ci.executeCommand("#useDB mas");
-		File file = new File("mas_all.txt");
+		ci.executeCommand("#useDB yelp");
+		File file = new File("yelp_all.nlqs");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-                ci.executeCommand("#query " + line);
+                try {
+                    ci.executeCommand("#query " + line);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
 	}

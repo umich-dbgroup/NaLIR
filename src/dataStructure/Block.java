@@ -35,6 +35,9 @@ public class Block
 	{
 		for(int i = 0; i < this.innerBlocks.size(); i++)
 		{
+			// Updated 04/06/2018 (cjbaik): prevent recursion
+			if (this.innerBlocks.get(i).equals(this)) continue;
+
 			this.innerBlocks.get(i).nodeEdgeGen(mainBlock, queryTree, graph); 
 		}
 		
@@ -92,6 +95,9 @@ public class Block
 	{
 		for(int i = 0; i < this.innerBlocks.size(); i++)
 		{
+			// Updated 04/06/2018 (cjbaik): prevent recursion
+			if (this.innerBlocks.get(i).equals(this)) continue;
+
 			this.innerBlocks.get(i).translate(mainBlock, queryTree); 
 		}
 

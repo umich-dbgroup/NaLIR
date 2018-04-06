@@ -6,6 +6,7 @@ import rdbms.MappedSchemaElement;
 import dataStructure.NLSentence;
 import dataStructure.ParseTreeNode;
 import dataStructure.Query;
+import rdbms.SchemaElement;
 
 public class FeedbackGenerator 
 {
@@ -49,19 +50,36 @@ public class FeedbackGenerator
 			ArrayList<ParseTreeNode> allNodes = query.parseTree.allNodes; 
 			for(int i = 0; i < allNodes.size(); i++)
 			{
-				String nodeMap = ""; 
+				String nodeMap = "";
+				String templarOutput = "";
 				ParseTreeNode NTVT = allNodes.get(i); 
 				if(NTVT.mappedElements.size() > 0)
 				{
 					if(NTVT.tokenType.equals("VTNUM"))
 					{
-						nodeMap += "#mapNum ; "; 
+						nodeMap += "#mapNum ; ";
 					}
 					else
 					{
 						nodeMap += "#map ; "; 
 					}
-					nodeMap += NTVT.label + "; " + NTVT.wordOrder + "; " + NTVT.choice; 
+					nodeMap += NTVT.label + "; " + NTVT.wordOrder + "; " + NTVT.choice;
+
+					templarOutput += NTVT.label + " :: ";
+					MappedSchemaElement chosenMapped = NTVT.mappedElements.get(NTVT.choice);
+					SchemaElement chosen = chosenMapped.schemaElement;
+					if (chosen.type.equals("entity") || chosen.type.equals("relationship")) {
+						templarOutput += chosen.name + " (" + chosenMapped.similarity + ")";
+					} else {
+						// Attribute or value
+						templarOutput += chosen.relation.name + "." + chosen.name;
+
+						if (chosenMapped.mappedValues.size() > 0 && chosenMapped.choice != -1) {
+							// TODO: Assume op is "=" for now, revise later
+							templarOutput += " = " + chosenMapped.mappedValues.get(chosenMapped.choice);
+						}
+						templarOutput += " (" + chosenMapped.similarity + ")";
+					}
 					
 					for(int j = 0; j < NTVT.mappedElements.size() && j < 5; j++)
 					{
@@ -88,7 +106,8 @@ public class FeedbackGenerator
 						}
 					}
 
-					feedback += nodeMap + "\n"; 
+					feedback += nodeMap + "\n";
+					feedback += templarOutput += "\n";
 				}
 			}
 			
@@ -97,13 +116,18 @@ public class FeedbackGenerator
 
 				for (int i = 0; i < query.NLSentences.size(); i++) {
 					NLSentence NL = query.NLSentences.get(i);
-					feedback += "#general " + NL.General();
+					if (NL != null) {
+						feedback += "#general " + NL.General();
+					}
 				}
 
-				ArrayList<String> specific = query.NLSentences.get(query.queryTreeID).Specific();
+				NLSentence NL = query.NLSentences.get(query.queryTreeID);
+				if (NL != null) {
+					ArrayList<String> specific = NL.Specific();
 
-				for (int i = 0; i < specific.size(); i++) {
-					feedback += specific.get(i);
+					for (int i = 0; i < specific.size(); i++) {
+						feedback += specific.get(i);
+					}
 				}
 			}
 		}

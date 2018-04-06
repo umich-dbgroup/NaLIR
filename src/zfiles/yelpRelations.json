@@ -1,0 +1,163 @@
+[
+  {
+    "name": "business",
+    "attributes": [
+      {
+        "name": "business_id",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "full_address",
+        "type": "text"
+      },
+      {
+        "name": "city",
+        "type": "text"
+      },
+      {
+        "name": "review_count",
+        "type": "number"
+      },
+      {
+        "name": "rating",
+        "type": "number"
+      },
+      {
+        "name": "state",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "category",
+    "attributes": [
+      {
+        "name": "business_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "category_name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "checkin",
+    "attributes": [
+      {
+        "name": "business_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "count",
+        "type": "number"
+      },
+      {
+        "name": "day",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "neighborhood",
+    "attributes": [
+      {
+        "name": "business_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "neighborhood_name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "review",
+    "attributes": [
+      {
+        "name": "business_id",
+        "type": "fk"
+      },
+      {
+        "name": "user_id",
+        "type": "fk"
+      },
+      {
+        "name": "rating",
+        "type": "number"
+      },
+      {
+        "importance": "primary",
+        "name": "text",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "type": "number"
+      },
+      {
+        "name": "month",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "tip",
+    "attributes": [
+      {
+        "name": "business_id",
+        "type": "fk"
+      },
+      {
+        "name": "user_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "text",
+        "type": "text"
+      },
+      {
+        "name": "likes",
+        "type": "number"
+      },
+      {
+        "name": "year",
+        "type": "number"
+      },
+      {
+        "name": "month",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "user",
+    "attributes": [
+      {
+        "name": "user_id",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "foreignAttribute": "business_id",
+    "primaryAttribute": "business_id",
+    "foreignRelation": "category",
+    "primaryRelation": "business"
+  },
+  {
+    "foreignAttribute": "business_id",
+    "primaryAttribute": "business_id",
+    "foreignRelation": "checkin",
+    "primaryRelation": "business"
+  },
+  {
+    "foreignAttribute": "business_id",
+    "primaryAttribute": "business_id",
+    "foreignRelation": "neighborhood",
+    "primaryRelation": "business"
+  },
+  {
+    "foreignAttribute": "business_id",
+    "primaryAttribute": "business_id",
+    "foreignRelation": "review",
+    "primaryRelation": "business"
+  },
+  {
+    "foreignAttribute": "user_id",
+    "primaryAttribute": "user_id",
+    "foreignRelation": "review",
+    "primaryRelation": "user"
+  },
+  {
+    "foreignAttribute": "business_id",
+    "primaryAttribute": "business_id",
+    "foreignRelation": "tip",
+    "primaryRelation": "business"
+  },
+  {
+    "foreignAttribute": "user_id",
+    "primaryAttribute": "user_id",
+    "foreignRelation": "tip",
+    "primaryRelation": "user"
+  }
+]

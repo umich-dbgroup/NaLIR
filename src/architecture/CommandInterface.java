@@ -27,7 +27,7 @@ public class CommandInterface
 	{
 		CommandInterface system = new CommandInterface();
 		System.out.println("NaLIR Loaded. Type 'exit' to quit.");
-		system.executeCommand("#useDB mas");
+		// system.executeCommand("#useDB mas");
 
 		Scanner scan = new Scanner(System.in);
 		while (true)

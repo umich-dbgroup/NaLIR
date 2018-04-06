@@ -140,6 +140,10 @@ in the order of
 <operator>&gt;</operator>
 <example>Find all the books, where the price of each book is higher than 100.</example>
 </phrase>
+<phrase>below
+<operator>&lt;</operator>
+<example>Find all the books, where the price of each book is lower than 5.</example>
+</phrase>
 <phrase>lower
 <operator>&lt;</operator>
 <example>Find all the books, where the price of each book is lower than 5.</example>
