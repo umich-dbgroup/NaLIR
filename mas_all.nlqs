@@ -76,7 +76,6 @@ return me the number of journals which have papers by "H. V. Jagadish".
 return me the number of papers written by "H. V. Jagadish" in each year.
 return me the number of authors of "Making database systems usable".
 return me the number of citations of "Making database systems usable" in each year.
-return me the number of citations of "Making database systems usable" before 2010.
 return me the number of papers by "H. V. Jagadish".
 return me the number of papers on VLDB conference.
 return me the number of papers on PVLDB.
@@ -191,6 +190,5 @@ return me the keywords, which have been contained by more than 100 papers in PVL
 return me the keywords, which have been contained by more than 10 papers of "H. V. Jagadish".
 return me the authors who have more than 10 papers in the VLDB conference.
 return me the author who has the most number of papers in the VLDB conference.
-return me the authors who have more papers on VLDB than ICDE.
 return me the author in the "University of Michigan" whose papers have more than 5000 total citations.
 return me the author in the "University of Michigan" in Databases area whose papers have more than 5000 total citations.
