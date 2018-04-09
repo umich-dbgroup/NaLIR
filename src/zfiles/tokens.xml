@@ -120,6 +120,12 @@ in the order of
 <operator>&gt;</operator>
 <example>Find all the books with greater than 2 editors.</example>
 </phrase>
+<phrase>above
+<operator>&gt;</operator>
+</phrase>
+<phrase>below
+<operator>&lt;</operator>
+</phrase>
 <phrase>more
 <operator>&gt;</operator>
 <example>Find all the books with more than 2 editors.</example>

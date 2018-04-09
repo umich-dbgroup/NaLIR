@@ -24,9 +24,10 @@ public class Experiments
 {
 	public static void main(String [] args) throws Exception
 	{
+	    String dataset = args[0];
 		CommandInterface ci = new CommandInterface();
-		ci.executeCommand("#useDB yelp");
-		File file = new File("yelp_all.nlqs");
+		ci.executeCommand("#useDB " + dataset);
+		File file = new File(dataset + "_all.nlqs");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {

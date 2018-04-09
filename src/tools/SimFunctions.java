@@ -53,10 +53,10 @@ public class SimFunctions
 			int sum = 0; 
 			for(int i = 0; i < element.mappedValues.size(); i++)
 			{
-				sum += Integer.parseInt(element.mappedValues.get(i));
+				sum += Double.parseDouble(element.mappedValues.get(i));
 			}
 			
-			int size = Integer.parseInt(nodeLabel)*element.mappedValues.size(); 
+			int size = (int) (Double.parseDouble(nodeLabel)*element.mappedValues.size());
 			element.similarity = 1-(double)Math.abs(sum-size)/(double)size; 
 		}
 		else

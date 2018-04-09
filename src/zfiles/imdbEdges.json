@@ -1,0 +1,128 @@
+[
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "cast",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "cast",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "aid",
+    "primaryAttribute": "aid",
+    "foreignRelation": "cast",
+    "primaryRelation": "actor"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "classification",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "classification",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "gid",
+    "primaryAttribute": "gid",
+    "foreignRelation": "classification",
+    "primaryRelation": "genre"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "copyright",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "copyright",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "cid",
+    "primaryAttribute": "id",
+    "foreignRelation": "copyright",
+    "primaryRelation": "company"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "directed_by",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "directed_by",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "did",
+    "primaryAttribute": "did",
+    "foreignRelation": "directed_by",
+    "primaryRelation": "director"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "made_by",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "made_by",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "pid",
+    "primaryAttribute": "pid",
+    "foreignRelation": "made_by",
+    "primaryRelation": "producer"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "tags",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "tags",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "kid",
+    "primaryAttribute": "id",
+    "foreignRelation": "tags",
+    "primaryRelation": "keyword"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "mid",
+    "foreignRelation": "written_by",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "msid",
+    "primaryAttribute": "sid",
+    "foreignRelation": "written_by",
+    "primaryRelation": "tv_series"
+  },
+  {
+    "foreignAttribute": "wid",
+    "primaryAttribute": "wid",
+    "foreignRelation": "written_by",
+    "primaryRelation": "writer"
+  }
+]

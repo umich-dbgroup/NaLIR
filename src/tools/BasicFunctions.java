@@ -1,5 +1,7 @@
 package tools;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -70,15 +72,7 @@ public class BasicFunctions
     }  
 	
 	public static boolean isNumeric(String str)
-	{ 
-		try 
-		{ 
-			Integer.parseInt(str); 
-			return true; 
-		} 
-		catch (NumberFormatException e) 
-		{ 
-			return false; 
-		} 
+	{
+		return NumberUtils.isCreatable(str);
 	}
 }

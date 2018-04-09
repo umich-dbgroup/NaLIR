@@ -1,0 +1,330 @@
+[
+  {
+    "name": "actor",
+    "attributes": [
+      {
+        "name": "aid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "gender",
+        "type": "text"
+      },
+      {
+        "name": "nationality",
+        "type": "text"
+      },
+      {
+        "name": "birth_city",
+        "type": "text"
+      },
+      {
+        "name": "birth_year",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "cast",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "aid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "role",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "classification",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "gid",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  },
+  {
+    "name": "company",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "pk"
+      },
+      {
+        "name": "country_code",
+        "type": "text"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "copyright",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "cid",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  },
+  {
+    "name": "directed_by",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "did",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  },
+  {
+    "name": "director",
+    "attributes": [
+      {
+        "name": "did",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "gender",
+        "type": "text"
+      },
+      {
+        "name": "nationality",
+        "type": "text"
+      },
+      {
+        "name": "birth_city",
+        "type": "text"
+      },
+      {
+        "name": "birth_year",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "genre",
+    "attributes": [
+      {
+        "name": "gid",
+        "type": "pk"
+      },
+      {
+        "name": "genre",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "keyword",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "pk"
+      },
+      {
+        "name": "keyword",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "made_by",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "pid",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  },
+  {
+    "name": "movie",
+    "attributes": [
+      {
+        "name": "mid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "title",
+        "type": "text"
+      },
+      {
+        "name": "release_year",
+        "type": "number"
+      },
+      {
+        "name": "budget",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "producer",
+    "attributes": [
+      {
+        "name": "pid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "gender",
+        "type": "text"
+      },
+      {
+        "name": "nationality",
+        "type": "text"
+      },
+      {
+        "name": "birth_city",
+        "type": "text"
+      },
+      {
+        "name": "birth_year",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "tags",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "kid",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  },
+  {
+    "name": "tv_series",
+    "attributes": [
+      {
+        "name": "sid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "title",
+        "type": "text"
+      },
+      {
+        "name": "release_year",
+        "type": "number"
+      },
+      {
+        "name": "num_of_seasons",
+        "type": "number"
+      },
+      {
+        "name": "num_of_episodes",
+        "type": "number"
+      },
+      {
+        "name": "budget",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "writer",
+    "attributes": [
+      {
+        "name": "wid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "gender",
+        "type": "text"
+      },
+      {
+        "name": "nationality",
+        "type": "text"
+      },
+      {
+        "name": "birth_city",
+        "type": "text"
+      },
+      {
+        "name": "birth_year",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "written_by",
+    "attributes": [
+      {
+        "name": "msid",
+        "type": "fk"
+      },
+      {
+        "name": "wid",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  }
+]
