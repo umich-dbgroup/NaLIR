@@ -57,7 +57,10 @@ public class SimFunctions
 			}
 			
 			int size = (int) (Double.parseDouble(nodeLabel)*element.mappedValues.size());
-			element.similarity = 1-(double)Math.abs(sum-size)/(double)size; 
+			// element.similarity = 1-(double)Math.abs(sum-size)/(double)size;
+
+			// 04/25/2018: cjbaik fix to prevent negative similarities
+			element.similarity = 1-(double)Math.abs(sum-size)/(double) Math.max(sum, size);
 		}
 		else
 		{

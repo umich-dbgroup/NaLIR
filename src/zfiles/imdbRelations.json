@@ -149,6 +149,7 @@
         "type": "pk"
       },
       {
+        "importance": "primary",
         "name": "genre",
         "type": "text"
       }
@@ -163,6 +164,7 @@
         "type": "pk"
       },
       {
+        "importance": "primary",
         "name": "keyword",
         "type": "text"
       }

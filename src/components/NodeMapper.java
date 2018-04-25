@@ -1,27 +1,42 @@
 package components;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
+import dataStructure.ParseTree;
+import dataStructure.ParseTreeNode;
+import dataStructure.Query;
+import edu.umich.templar.db.Database;
+import edu.umich.templar.db.MatchedDBElement;
+import edu.umich.templar.db.el.*;
+import edu.umich.templar.log.graph.LogGraph;
+import edu.umich.templar.main.settings.Params;
+import edu.umich.templar.scorer.LogGraphScorer;
+import edu.umich.templar.task.Interpretation;
+import edu.umich.templar.util.Similarity;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import dataStructure.*; 
-import rdbms.*; 
+import rdbms.MappedSchemaElement;
+import rdbms.RDBMS;
 import tools.BasicFunctions;
 import tools.SimFunctions;
 
+import java.util.*;
+
 public class NodeMapper
 {
-	public static void phraseProcess(Query query, RDBMS db, Document tokens) throws Exception
+	public static void phraseProcess(Query query, RDBMS db, Document tokens,
+									 Database templarDB, LogGraph logGraph) throws Exception
 	{
 		tokenize(query, tokens); 
 		deleteUseless(query); 
 		map(query, db); 
 		deleteNoMatch(query); 
-		individualRanking(query); 
-		groupRanking(query, db); 
+		individualRanking(query);
+
+		if (logGraph != null) {
+			rankConfigs(query, templarDB, logGraph);
+		} else {
+			groupRanking(query, db);
+		}
 	}
 	
 	public static void tokenize(Query query, Document tokens) throws Exception
@@ -249,6 +264,210 @@ public class NodeMapper
 			
 			treeNode.mappedElements.removeAll(deleteList); 
 		}
+	}
+
+	public static Similarity similarity = new Similarity(10000);
+	public static MatchedDBElement convertElToTemplar(Database templarDB, ParseTreeNode node, MappedSchemaElement mse) {
+        boolean isFirstMappedChildOfRoot = false;
+	    ParseTreeNode curNode = node;
+	    while (true) {
+	        if (!curNode.parent.mappedElements.isEmpty()) {
+	            break;
+            }
+            if (curNode.parent.tokenType.equals("CMT") || curNode.parent.parent == null) {
+	            // Make sure that this is the first child by word order
+                int minWordOrder = 9999;
+                ParseTreeNode minWordOrderMappedChild = null;
+                for (int i = 0; i < curNode.parent.children.size(); i++) {
+                    ParseTreeNode child = curNode.parent.children.get(i);
+                    if (child.wordOrder < minWordOrder) {
+                        minWordOrder = child.wordOrder;
+                        minWordOrderMappedChild = child;
+                    }
+                }
+                if (minWordOrderMappedChild != null && minWordOrderMappedChild.equals(curNode)) isFirstMappedChildOfRoot = true;
+	            break;
+            }
+            curNode = curNode.parent;
+        }
+
+
+	    DBElement el;
+	    // It's a relation
+	    if (mse.schemaElement.relation.equals(mse.schemaElement)) {
+	        Relation rel = templarDB.getRelationByName(mse.schemaElement.name);
+	        mse.similarity = similarity.sim(node.label, rel.getCleanedName());
+	        el = rel;
+            mse.choice = -1;
+        } else {
+	        Relation rel = templarDB.getRelationByName(mse.schemaElement.relation.name);
+	        Attribute attr = rel.getAttribute(mse.schemaElement.name);
+
+	        // Figure out if there's any parent or child functions/operators
+            String op = "=";
+            boolean opSet = false;
+            String func = null;
+            if (node.parent.tokenType.equals("OT")) {
+                op = node.parent.function;
+                opSet = true;
+            }
+            if (node.parent.tokenType.equals("FT")) {
+                func = node.parent.function;
+            }
+
+            for (ParseTreeNode child : node.children) {
+                if (!opSet && child.tokenType.equals("OT")) {
+                    op = child.function;
+                    opSet = true;
+                }
+                if (func == null && child.tokenType.equals("FT")) {
+                    func = child.function;
+                }
+            }
+
+	        // It's only a value if the following conditions hold true
+	        if (!mse.mappedValues.isEmpty() && mse.choice != -1 && !isFirstMappedChildOfRoot && func == null) {
+                if (node.tokenType.equals("VTNUM")) {
+                    el = new NumericPredicate(attr, op, Double.valueOf(node.label), null);
+
+                    double prevSim = mse.similarity;
+                    if (prevSim > 1.0) prevSim = 1.0;
+                    if (prevSim < 0.0) prevSim = 0.0;
+                    // We only would have found anything if the predicate exists
+                    mse.similarity = ((1.0 - Params.SQLIZER_EPSILON) + prevSim) / 2;
+                } else {
+                    String value = mse.mappedValues.get(mse.choice);
+                    el = new TextPredicate(attr, value);
+                    mse.similarity = similarity.sim(node.label, value);
+                }
+            } else {
+	            // Otherwise, it's an attr
+                double attrSim = similarity.sim(node.label, attr.getCleanedName());
+
+                if (mse.schemaElement.relation.defaultAttribute.equals(mse.schemaElement)) {
+                    double relSim = similarity.sim(node.label, rel.getCleanedName());
+                    mse.similarity = Math.max(relSim, attrSim);
+                } else {
+                    mse.similarity = attrSim;
+                }
+                mse.choice = -1;
+                el = attr;
+            }
+        }
+
+		return new MatchedDBElement(node.label, el, mse.similarity);
+	}
+
+	public static void rankConfigs(Query query, Database templarDB, LogGraph logGraph) {
+        List<List<MatchedDBElement>> prunedCands = new ArrayList<>();
+
+        Map<MatchedDBElement, Integer> melToChoiceIndex = new HashMap<>();
+
+		List<ParseTreeNode> mappedNodes = new ArrayList<>();
+		for (ParseTreeNode node : query.parseTree.allNodes) {
+			if (!node.mappedElements.isEmpty()) {
+				mappedNodes.add(node);
+
+				List<MatchedDBElement> pruned = new ArrayList<>();
+				prunedCands.add(pruned);
+
+				boolean lastWasExactMatch = false;
+
+				Set<MatchedDBElement> dupl = new HashSet<>();
+				for (int i = 0; i < node.mappedElements.size(); i++) {
+                    MatchedDBElement mel = convertElToTemplar(templarDB, node, node.mappedElements.get(i));
+                    if (dupl.contains(mel)) continue;
+                    dupl.add(mel);
+
+                    melToChoiceIndex.put(mel, i);
+
+                    boolean exactMatch = false;
+                    if (mel.getScore() >= Params.EXACT_SCORE) {
+                        exactMatch = true;
+                    }
+
+                    if (lastWasExactMatch && !exactMatch) break;
+
+                    pruned.add(mel);
+
+                    if (pruned.size() >= 5) break;
+
+                    lastWasExactMatch = exactMatch;
+                }
+
+			}
+		}
+
+		int totalInterpsCount = 1;
+		int[] counters = new int[mappedNodes.size()];
+		int[] listSizes = new int[mappedNodes.size()];
+		for (int i = 0; i < counters.length; i++) {
+			counters[i] = 0;
+			listSizes[i] = prunedCands.get(i).size();
+			totalInterpsCount *= listSizes[i];
+		}
+
+		System.out.println("TOTAL INTERPS COUNT: " + totalInterpsCount);
+
+		List<MatchedDBElement> candInterp = new ArrayList<>();
+        List<Interpretation> maxInterps = new ArrayList<>();
+        LogGraphScorer scorer = new LogGraphScorer(logGraph, true);
+
+        double maxScore = 0.0;
+
+        for (int i = 0; i < totalInterpsCount; i++) {
+            for (int j = 0; j < prunedCands.size(); j++) {
+                MatchedDBElement mel = prunedCands.get(j).get(counters[j]);
+                candInterp.add(mel);
+            }
+
+            Interpretation interpObj = new Interpretation(candInterp);
+            double score = scorer.score(interpObj);
+            interpObj.setScore(score);
+
+            if (score > maxScore) {
+                maxInterps = new ArrayList<>();
+                maxInterps.add(interpObj);
+                maxScore = score;
+            } else if (score == maxScore) {
+                maxInterps.add(interpObj);
+            }
+            candInterp = new ArrayList<>();
+
+            int counterIndex = 0;
+            counters[counterIndex]++;
+            while (counters[counterIndex] >= listSizes[counterIndex]) {
+                counters[counterIndex] = 0;
+
+                counterIndex++;
+                if (counterIndex >= counters.length) break;
+
+                counters[counterIndex] += 1;
+            }
+		}
+
+		if (maxInterps.isEmpty()) throw new RuntimeException("No chosen interps!");
+
+        if (maxInterps.size() > 1) {
+            System.err.println("Warning: TIE!");
+        }
+
+        for (int i = 0; i < maxInterps.get(0).getElements().size(); i++) {
+            MatchedDBElement mel = maxInterps.get(0).getElements().get(i);
+            mappedNodes.get(i).choice = melToChoiceIndex.get(mel);
+
+            query.melMap.put(mappedNodes.get(i), mel);
+
+            if (mel.getEl() instanceof TextPredicate) {
+                mappedNodes.get(i).tokenType = "VTTEXT";
+            } else if (mel.getEl() instanceof Attribute) {
+                mappedNodes.get(i).tokenType = "NT";
+            }
+        }
+
+        query.interp = maxInterps.get(0);
+
+        // System.out.println("JOIN PATH: " + maxInterps.get(0).getJoinPath());
 	}
 
 	public static void groupRanking(Query query, RDBMS db)

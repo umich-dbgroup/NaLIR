@@ -1,7 +1,11 @@
 package dataStructure;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import edu.umich.templar.db.MatchedDBElement;
+import edu.umich.templar.task.Interpretation;
 import rdbms.SchemaGraph;
 
 
@@ -32,7 +36,10 @@ public class Query
 
 	public String translatedSQL = "";  
 	public ArrayList<ArrayList<String>> finalResult = new ArrayList<ArrayList<String>>(); 
-	
+
+	public Interpretation interp = null;
+	public Map<ParseTreeNode, MatchedDBElement> melMap = new HashMap<>();
+
 	public Query(String queryInput, SchemaGraph graph)
 	{
 		sentence = new Sentence(queryInput); 

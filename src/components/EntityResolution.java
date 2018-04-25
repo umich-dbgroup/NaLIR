@@ -2,6 +2,7 @@ package components;
 
 import java.util.ArrayList;
 
+import edu.umich.templar.db.MatchedDBElement;
 import rdbms.SchemaElement;
 
 import dataStructure.EntityPair;
@@ -39,7 +40,11 @@ public class EntityResolution
 						if(left.label.equals(right.label))
 						{
 							EntityPair entityPair = new EntityPair(left, right);
-							query.entities.add(entityPair); 
+							query.entities.add(entityPair);
+
+							// Remove mel
+							MatchedDBElement mel = query.melMap.get(right);
+							query.interp.getElements().remove(mel);
 						}
 						else
 						{
@@ -58,7 +63,19 @@ public class EntityResolution
 						else
 						{
 							EntityPair entityPair = new EntityPair(left, right);
-							query.entities.add(entityPair); 
+							query.entities.add(entityPair);
+
+							// Remove mel
+							if (left.tokenType.equals("VTTEXT") && right.tokenType.equals("NT")) {
+								MatchedDBElement mel = query.melMap.get(right);
+								query.interp.getElements().remove(mel);
+							} else if (left.tokenType.equals("NT") && right.tokenType.equals("VTTEXT")) {
+								MatchedDBElement mel = query.melMap.get(left);
+								query.interp.getElements().remove(mel);
+							} else {
+								MatchedDBElement mel = query.melMap.get(right);
+								query.interp.getElements().remove(mel);
+							}
 						}
 					}
 				}

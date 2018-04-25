@@ -95,7 +95,7 @@ public class CommandInterface
 	{
 		query = new Query(queryInput, db.schemaGraph); 
 		components.StanfordNLParser.parse(query, lexiParser); 
-		components.NodeMapper.phraseProcess(query, db, tokens); 
+		components.NodeMapper.phraseProcess(query, db, tokens, null, null);
 		
 		components.EntityResolution.entityResolute(query); 
 		components.TreeStructureAdjustor.treeStructureAdjust(query, db); 

@@ -26,8 +26,10 @@ public class SQLTranslator
 		query.blocks.get(0).translate(query.mainBlock, query.queryTree); 
 		query.translatedSQL = query.blocks.get(0).SQL; 
 
-		System.out.println(query.translatedSQL); 
-		query.finalResult = db.conductSQL(query.translatedSQL); 
+		System.out.println(query.translatedSQL);
+
+		// Don't execute final query
+		//query.finalResult = db.conductSQL(query.translatedSQL);
 	}
 	
 	public static void preStructureAdjust(Query query)

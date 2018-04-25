@@ -148,5 +148,6 @@
     <orderEntry type="library" name="stanford-parser-3.2.0-sources" level="project" />
     <orderEntry type="library" name="stanford-parser-3.2.0-models" level="project" />
     <orderEntry type="library" name="org.apache.commons:commons-lang3:3.7" level="project" />
+    <orderEntry type="library" name="templar-all" level="project" />
   </component>
 </module>
