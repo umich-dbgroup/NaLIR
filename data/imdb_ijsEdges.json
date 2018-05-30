@@ -3,7 +3,7 @@
     "foreignAttribute": "movie_id",
     "primaryAttribute": "id",
     "foreignRelation": "roles",
-    "primaryRelation": "movie"
+    "primaryRelation": "movies"
   },
   {
     "foreignAttribute": "actor_id",
