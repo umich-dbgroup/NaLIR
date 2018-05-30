@@ -1,0 +1,110 @@
+[
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "business",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "countries",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "distributors",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "genres",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "language",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "movies2actors",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "actorid",
+    "primaryAttribute": "actorid",
+    "foreignRelation": "movies2actors",
+    "primaryRelation": "actors"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "movies2directors",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "directorid",
+    "primaryAttribute": "directorid",
+    "foreignRelation": "movies2directors",
+    "primaryRelation": "directors"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "movies2editors",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "editorid",
+    "primaryAttribute": "editorid",
+    "foreignRelation": "movies2editors",
+    "primaryRelation": "editors"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "movies2producers",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "producerid",
+    "primaryAttribute": "producerid",
+    "foreignRelation": "movies2producers",
+    "primaryRelation": "producers"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "movies2writers",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "writerid",
+    "primaryAttribute": "writerid",
+    "foreignRelation": "movies2writers",
+    "primaryRelation": "writers"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "prodcompanies",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "ratings",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movieid",
+    "primaryAttribute": "movieid",
+    "foreignRelation": "runningtimes",
+    "primaryRelation": "movies"
+  }
+]

@@ -1,0 +1,347 @@
+[
+  {
+    "name": "actors",
+    "attributes": [
+      {
+        "name": "actorid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "sex",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "business",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "businesstext",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "countries",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "country",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "directors",
+    "attributes": [
+      {
+        "name": "directorid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "rate",
+        "type": "number"
+      },
+      {
+        "name": "gross",
+        "type": "number"
+      },
+      {
+        "name": "num",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "distributors",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "editors",
+    "attributes": [
+      {
+        "name": "editorid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "genres",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "genre",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "language",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "language",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "title",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies2actors",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "name": "actorid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "as_character",
+        "type": "text"
+      },
+      {
+        "name": "leading",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies2directors",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "name": "directorid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "genre",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies2editors",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "name": "editorid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "addition",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies2producers",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "name": "producerid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "addition",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies2writers",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "name": "writerid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "addition",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "prodcompanies",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "producers",
+    "attributes": [
+      {
+        "name": "producerid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "ratings",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "rank",
+        "type": "text"
+      },
+      {
+        "name": "votes",
+        "type": "number"
+      },
+      {
+        "name": "distribution",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "runningtimes",
+    "attributes": [
+      {
+        "name": "movieid",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "time",
+        "type": "text"
+      },
+      {
+        "name": "addition",
+        "type": "text"
+      },
+      {
+        "name": "time1",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "writers",
+    "attributes": [
+      {
+        "name": "writerid",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+]

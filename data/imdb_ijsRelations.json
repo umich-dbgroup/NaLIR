@@ -1,0 +1,130 @@
+[
+  {
+    "name": "actors",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "pk"
+      },
+      {
+        "name": "first_name",
+        "type": "text"
+      },
+      {
+        "importance": "primary",
+        "name": "last_name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "roles",
+    "attributes": [
+      {
+        "name": "actor_id",
+        "type": "fk"
+      },
+      {
+        "name": "movie_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "role",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies_genres",
+    "attributes": [
+      {
+        "name": "movie_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "genre",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies_directors",
+    "attributes": [
+      {
+        "name": "movie_id",
+        "type": "fk"
+      },
+      {
+        "name": "director_id",
+        "type": "fk"
+      }
+    ],
+    "type": "relationship"
+  },
+  {
+    "name": "directors",
+    "attributes": [
+      {
+        "name": "did",
+        "type": "pk"
+      },
+      {
+        "name": "first_name",
+        "type": "text"
+      },
+      {
+        "importance": "primary",
+        "name": "last_name",
+        "type": "text"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "directors_genres",
+    "attributes": [
+      {
+        "name": "director_id",
+        "type": "fk"
+      },
+      {
+        "importance": "primary",
+        "name": "genre",
+        "type": "text"
+      },
+      {
+        "name": "prob",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  },
+  {
+    "name": "movies",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "pk"
+      },
+      {
+        "importance": "primary",
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "type": "number"
+      },
+      {
+        "name": "rank",
+        "type": "number"
+      }
+    ],
+    "type": "entity"
+  }
+]

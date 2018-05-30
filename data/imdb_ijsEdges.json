@@ -1,0 +1,38 @@
+[
+  {
+    "foreignAttribute": "movie_id",
+    "primaryAttribute": "id",
+    "foreignRelation": "roles",
+    "primaryRelation": "movie"
+  },
+  {
+    "foreignAttribute": "actor_id",
+    "primaryAttribute": "id",
+    "foreignRelation": "roles",
+    "primaryRelation": "actors"
+  },
+  {
+    "foreignAttribute": "movie_id",
+    "primaryAttribute": "id",
+    "foreignRelation": "movies_genres",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "movie_id",
+    "primaryAttribute": "id",
+    "foreignRelation": "movies_directors",
+    "primaryRelation": "movies"
+  },
+  {
+    "foreignAttribute": "director_id",
+    "primaryAttribute": "id",
+    "foreignRelation": "movies_directors",
+    "primaryRelation": "directors"
+  },
+  {
+    "foreignAttribute": "director_id",
+    "primaryAttribute": "id",
+    "foreignRelation": "directors_genres",
+    "primaryRelation": "directors"
+  }
+]
