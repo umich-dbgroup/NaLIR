@@ -21,11 +21,7 @@ Also, load `setup_mas.sql` in the root project folder into MySQL as well, which 
 There are some hard-coded paths (to schema information and the like) in the original code that need to be modified. Executing it will give you the errors that will point you in the right direction, but at the very least, the following should be modified for your local machine:
 
 * `architecture/CommandInterface.java`
-    * Line 51: path to the corresponding file on your machine
-* `architecture/Experiments.java`
-    * Lines 29-31: your MySQL configuration info
-    * Line 53: path to the corresponding file on your machine
-    * Lines 59-70: setting the correct query to run the test for
+    * Line 52: path to the corresponding file on your machine
 * `rdbms/RDBMS.java`
     * Lines 22-24: your MySQL configuration info
 * `rdbms/SchemaGraph.java`
