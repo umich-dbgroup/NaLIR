@@ -443,10 +443,13 @@ session.setAttribute("system", system);
 
 <p>Use 
 <select style = "font-size:13px" id = "database">
-<option value = "MAS" selected = "selected">Microsoft Academic Search</option> 
-<!-- 
-<option value = "YahooMovie">Yahoo!Movie</option> 
- -->
+<option value = "MAS" selected = "selected">Microsoft Academic Search</option>
+<option value = "imdb">IMDB (SQLizer)</option>
+<option value = "imdb_ijs">IMDB_ijs</option>
+<option value = "imdb_full">IMDB_full</option>
+  <!--
+  <option value = "YahooMovie">Yahoo!Movie</option>
+   -->
 <option value = "dblp">DBLP</option> 
 </select>
 database.</p>

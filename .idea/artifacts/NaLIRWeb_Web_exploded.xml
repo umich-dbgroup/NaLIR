@@ -14,6 +14,7 @@
           <element id="library" level="project" name="morphadorner" />
           <element id="library" level="project" name="com.googlecode.json-simple:json-simple:1.1.1" />
           <element id="library" level="project" name="stanford-parser-3.2.0-models" />
+          <element id="library" level="project" name="org.apache.commons:commons-lang3:3.7" />
         </element>
       </element>
     </root>
