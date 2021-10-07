@@ -4,13 +4,13 @@
 
 First, download necessary jars from:
 
-https://s3.amazonaws.com/umdb-users/cjbaik/nalir_jars.tar.gz
+https://drive.google.com/file/d/1GT3xc_h23Rv36bkWu5zxIKwSwU9oX-gS/view?usp=sharing
 
 and unzip it into `NaLIR/lib`.
 
 Second, download the SQL files needed from:
 
-https://s3.amazonaws.com/umdb-users/cjbaik/mas.sql
+https://drive.google.com/file/d/1xN1RW_q99kK5nhm5KSGftaHMMvgemvSu/view?usp=sharing
 
 and load it into a running MySQL database on your machine.
 
